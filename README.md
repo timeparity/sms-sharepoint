@@ -66,6 +66,7 @@ Include the following refrences in your .Net Application:
 ```c#
 using TimeParity.SharePoint.SMS;
 using TimeParity.SharePoint.SMS.Extensions;
+using Microsoft.SharePoint.Client;
 ```
 
  <i class="icon-user"></i>Send SMS to SharePoint User
@@ -76,6 +77,7 @@ Once you have included the [references](#include-refrences) , you have the follo
 ```c#
 using TimeParity.SharePoint.SMS;
 using TimeParity.SharePoint.SMS.Extensions;
+using Microsoft.SharePoint.Client;
 ```
 #### <i class="icon-user"></i>SMS By Username / Email id
 
@@ -83,7 +85,8 @@ using TimeParity.SharePoint.SMS.Extensions;
 
 ```c#
 /// <summary>
-/// Creates entry in SMS Request List for sending the message to user of provided user id (loginame or email id)
+/// Creates entry in SMS Request List for sending the message  
+/// to user of provided user id (loginame or email id)
 /// </summary>
 /// <param name="loginNameOrEmail">loginname or email id of the user</param>   
 /// <param name="message">SMS Message content</param>  
@@ -91,3 +94,35 @@ using TimeParity.SharePoint.SMS.Extensions;
 
 public static SMSRequestResult SendSMSToUser(this ClientContext context, string loginNameOrEmail, 
 string message, string title = "Custom")
+```
+
+>**Usage**
+
+```c#
+
+// Office Dev PNP Authentication Manager
+var am = new OfficeDevPnP.Core.AuthenticationManager();
+
+// Url of the site where add-in is already installed
+string siteUrl = "https://foobar.sharepoint.com";
+
+// The content of your SMS message
+string smscontent = "A message from SharePoint";
+
+// Replace with a valid user email id from your SharePoint site
+string emailid = ""bob@foobar.onmicrosoft.com";
+
+// Replace with a valid username from your SharePoint site
+string username = "i:0#.f|membership|steve@foobar.onmicrosoft.com";
+
+using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
+{ 
+    SMSRequestResult result = clientcontext.SendSMSToUser(emailid , smscontent);
+    Console.WriteLine("Requested by email id, Result : {0} , Message: {1} "
+    , result.status.ToString(), result.status_message);
+    
+    SMSRequestResult result2 = clientcontext.SendSMSToUser(username , smscontent);
+    Console.WriteLine("Requested by username, Result : {0} , Message: {1} "
+    , result2.status.ToString(), result2.status_message);
+}
+```
