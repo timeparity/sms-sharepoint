@@ -11,10 +11,12 @@ SMS For Office is SharePoint Add-in available in Microsoft SharePoint Store, tha
 
 •	On SharePoint Store: https://store.office.com/en-us/app.aspx?assetid=WA104380716 
 
+![Sending SMS from SharePoint Online / SharePoint 2016.](https://timeparity.com//img/sp_smsrequestlist_additem.png)
+
 ## Tutorial
 
-•	Please note this repository is intended for developers to integrate the add-in programmatically in applications. 
+•	Please note this github repository is intended for developers to integrate the add-in programmatically in applications. 
 
 •	If you are looking for tutorial to send SMS from SharePoint Site, or need help with Installation refer the tutorial site here :    https://smsappsharepoint.wordpress.com/ 
 
-![Sending SMS from SharePoint Online / SharePoint 2016.](https://timeparity.com//img/sp_smsrequestlist_additem.png)
+
