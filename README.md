@@ -393,7 +393,7 @@ string siteUrl = "https://foobar.sharepoint.com";
 string smscontent = "A message from SharePoint";
 
 // Replace with a valid SharePoint Group Id
-int groupID = "bob@foobar.onmicrosoft.com";
+int groupID = 4;
 
 
 using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
