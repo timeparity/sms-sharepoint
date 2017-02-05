@@ -8,7 +8,7 @@ This is the main repository for the SMS For Office Add-in extensions for SharePo
 Table of contents
 -------------
 
-*   [SMS For Office (SMS Via SharePoint List) - CSOM Extensions!](/)
+*   [SMS For Office (SMS Via SharePoint List) - CSOM Extensions!](#)
     *   [About](#about)
     *   [Getting Started](#getting-started)
         *   [Install from NUGET](#install-from-nuget)
@@ -43,7 +43,7 @@ Getting Started
 
 Nuget:  [SharePoint Online SMS Integration](https://www.nuget.org/packages/TimeParity.SharePointOnline.SMS)
 ```powershell
-Install-Package TimeParity.SharePointOnline.SMS
+PM> Install-Package TimeParity.SharePointOnline.SMS
 ```
 
 
@@ -51,5 +51,5 @@ Install-Package TimeParity.SharePointOnline.SMS
 
 Nuget:  [SharePoint 2016 SMS Integration](https://www.nuget.org/packages/TimeParity.SharePoint2016.SMS)
 ```powershell
-Install-Package TimeParity.SharePoint2016.SMS
+PM> Install-Package TimeParity.SharePoint2016.SMS
 ```
