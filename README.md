@@ -196,8 +196,8 @@ using Microsoft.SharePoint.Client;
 ///  recommended value is 25</param>  
 /// <param name="title">Optional title to be set for the request, default is "Custom"</param>  
 
-public static SMSRequestResult SendSMSToMultipleUsers(this ClientContext context, IEnumerable<string> loginNameOrEmail, 
-string message, string title = "Custom")
+public static SMSRequestResult SendSMSToMultipleUsers(this ClientContext context, 
+IEnumerable<string> loginNameOrEmail, string message, string title = "Custom")
 ```
 
 >**Usage**
@@ -231,15 +231,15 @@ using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
     // create a new request for each user (batchsize = 1)   
     SMSRequestResult result = clientcontext.SendSMSToMultipleUsers(userArray , smscontent, 1);
     Console.WriteLine("Requested by array");
-    Console.WriteLine("Result : {0}",result.status.ToString());
-    Console.WriteLine("Result Message: {0} ", result.status_message);
+    Console.WriteLine("Result : " + result.status.ToString());
+    Console.WriteLine("Result Message: " + result.status_message);
     
     // Send SMS to An List of users, 
     // create a single request for every 25 users  (batchsize default value is 25)
     SMSRequestResult result2 = clientcontext.SendSMSToMultipleUsers(userList , smscontent);
     Console.WriteLine("Requested by list");
-    Console.WriteLine("Result : {0}",result2.status.ToString());
-    Console.WriteLine("Result Message: {0} ", result2.status_message);
+    Console.WriteLine("Result : " + result2.status.ToString());
+    Console.WriteLine("Result Message: " + result2.status_message);
 ```
 #### <i class="icon-user"></i>SMS By CSOM UserCollection Object
 
@@ -285,8 +285,153 @@ using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
     //Send SMS to Users
     SMSRequestResult result = clientcontext.SendSMSToMultipleUsers(users , smscontent);
     Console.WriteLine("Requested by usercollection object");
-    Console.WriteLine("Result : {0}",result.status.ToString());
-    Console.WriteLine("Result Message: {0} ", result.status_message);
+    Console.WriteLine("Result : " + result.status.ToString());
+    Console.WriteLine("Result Message: " + result.status_message);
+     
+}
+```
+
+ <i class="icon-user"></i>Send SMS to SharePoint Group 
+-------------
+
+Once you have included the [references](#include-refrences) , you have the following options to chose from for sending SMS to users of your SharePoint Group
+
+```c#
+using TimeParity.SharePoint.SMS;
+using TimeParity.SharePoint.SMS.Extensions;
+using Microsoft.SharePoint.Client;
+```
+#### <i class="icon-user"></i>SMS By SharePoint Group Name
+
+>**Extension Definiton**
+
+```c#
+/// <summary>
+/// Creates entry in SMS Request List for sending the message to users of a SharePoint Group
+/// </summary>
+/// <param name="groupTitle">SharePoint Group Title</param>   
+/// <param name="message">SMS Message content</param>     
+/// <param name="batchSize">Optional limit to specify maximum recipients per request,
+///  recommended value is 25</param>  
+/// <param name="title">Optional title to be set for the request, default is "Custom"</param> 
+
+public static SMSRequestResult SendSMSToSharePointGroupUsers(this ClientContext context, string groupTitle,
+string message, int batchSize = 25, string title = "Custom")
+```
+
+>**Usage**
+
+```c#
+
+// Office Dev PNP Authentication Manager
+var am = new OfficeDevPnP.Core.AuthenticationManager();
+
+// Url of the site where add-in is already installed
+string siteUrl = "https://foobar.sharepoint.com";
+
+// The content of your SMS message
+string smscontent = "A message from SharePoint";
+
+// Replace with a valid SharePoint Group Namme
+string groupTitle = "bob@foobar.onmicrosoft.com";
+
+using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
+{ 
+    //Send SMS to Group Users
+    SMSRequestResult result = clientcontext.SendSMSToSharePointGroupUsers(groupTitle , smscontent);
+    
+    Console.WriteLine("Requested by email id, Result : {0} , Message: {1} "
+    , result.status.ToString(), result.status_message);
+    
+}
+```
+#### <i class="icon-user"></i>SMS By SharePoint Group Id
+
+>**Extension Definiton**
+
+```c#
+/// <summary>
+/// Creates entry in SMS Request List for sending the message to users of a SharePoint Group
+/// </summary>
+/// <param name="groupID">SharePoint Group Id</param>   
+/// <param name="message">SMS Message content</param>     
+/// <param name="batchSize">Optional limit to specify maximum recipients per request,
+/// recommended value is 25</param>  
+/// <param name="title">Optional title to be set for the request, default is "Custom"</param>  
+
+public static SMSRequestResult SendSMSToSharePointGroupUsers(this ClientContext context, int groupID, 
+string message, int batchSize = 25, string title = "Custom")
+```
+
+>**Usage**
+
+```c#
+
+// Office Dev PNP Authentication Manager
+var am = new OfficeDevPnP.Core.AuthenticationManager();
+
+// Url of the site where add-in is already installed
+string siteUrl = "https://foobar.sharepoint.com";
+
+// The content of your SMS message
+string smscontent = "A message from SharePoint";
+
+// Replace with a valid SharePoint Group Id
+int groupID = "bob@foobar.onmicrosoft.com";
+
+
+using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
+{ 
+    //Send SMS to Group Users
+    SMSRequestResult result = clientcontext.SendSMSToSharePointGroupUsers(groupID , smscontent);
+    
+     Console.WriteLine("Requested by email id, Result : {0} , Message: {1} "
+    , result.status.ToString(), result.status_message);
+}
+```
+#### <i class="icon-user"></i>SMS By CSOM Group Object
+
+>**Extension Definiton**
+
+```c#
+/// <summary>
+/// Creates entry in SMS Request List for sending the message to users of a SharePoint Group
+/// </summary>
+/// <param name="group">SharePoint Group</param>   
+/// <param name="message">SMS Message content</param>     
+/// <param name="batchSize">Optional limit to specify maximum recipients per request,
+///  recommended value is 25</param>  
+/// <param name="title">Optional title to be set for the request, default is "Custom"</param>  
+
+public static SMSRequestResult SendSMSToSharePointGroupUsers(this ClientContext context, Group group, string message, int batchSize = 25, string title = "Custom")
+```
+
+>**Usage**
+
+```c#
+
+// Office Dev PNP Authentication Manager
+var am = new OfficeDevPnP.Core.AuthenticationManager();
+
+// Url of the site where add-in is already installed
+string siteUrl = "https://foobar.sharepoint.com";
+
+// The content of your SMS message
+string smscontent = "A message from SharePoint";
+
+using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
+{ 
+   // Get default owner group
+    clientContext.Load(clientContext.Web);
+    clientContext.ExecuteQueryRetry();   
+    
+    Group group = clientcontext.Web.AssociatedOwnerGroup;
+    
+    //Send SMS to Group Users
+    SMSRequestResult result = clientcontext.SendSMSToSharePointGroupUsers(group , smscontent);
+    
+     Console.WriteLine("Requested by email id, Result : {0} , Message: {1} "
+    , result.status.ToString(), result.status_message);
      
 }
 ```
