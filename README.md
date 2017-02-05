@@ -11,9 +11,9 @@ Table of contents
 *   [SMS For Office (SMS Via SharePoint List) - CSOM Extensions!](#)
     *   [About](#about)
     *   [Getting Started](#getting-started)
-        *   [Prerequisite](#prerequisite)
-        *   [Install from NUGET](#install-from-nuget)
-        *   [Include Refrences](#include-refrences)
+        *   [Prerequisite](#1-prerequisite)
+        *   [Install Library from NUGET](#2-install-library-from-nuget)
+        *   [Include Refrences](#3-include-refrences)
     *   [Send SMS to SharePoint User](#-send-sms-to-sharepoint-user)
         *   [SMS By Username / Email id](#sms-by-username--email-id)
         *   [SMS By CSOM User Object](#sms-by-csom-user-object)
@@ -57,7 +57,7 @@ Getting Started
 
 
 
-### 2) Install from NUGET
+### 2) Install Library from NUGET
 
 The Library is available in on Nuget, please get the latest version depending on your SharePoint Environment:
 
