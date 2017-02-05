@@ -169,3 +169,120 @@ using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
      
 }
 ```
+ <i class="icon-user"></i>Send SMS to Multiple SharePoint Users
+-------------
+
+Once you have included the [references](#include-refrences) , you have the following options to chose from for sending SMS to your SharePoint Site Users
+
+```c#
+using TimeParity.SharePoint.SMS;
+using TimeParity.SharePoint.SMS.Extensions;
+using Microsoft.SharePoint.Client;
+```
+#### <i class="icon-user"></i>SMS By Username / Email id
+
+>**Extension Definiton**
+
+```c#
+/// <summary>
+/// Creates entry in SMS Request List for sending the message  
+/// to users with provided user id(s) - loginame(s) or email id(s)
+/// </summary>
+/// <param name="loginNameOrEmail">A list/Array of loginname or email id of the users</param>   
+/// <param name="message">SMS Message content</param>  
+/// <param name="batchSize">Optional limit to specify maximum recipients per request,
+///  recommended value is 25</param>  
+/// <param name="title">Optional title to be set for the request, default is "Custom"</param>  
+
+public static SMSRequestResult SendSMSToMultipleUsers(this ClientContext context, IEnumerable<string> loginNameOrEmail, 
+string message, string title = "Custom")
+```
+
+>**Usage**
+
+```c#
+
+// Office Dev PNP Authentication Manager
+var am = new OfficeDevPnP.Core.AuthenticationManager();
+
+// Url of the site where add-in is already installed
+string siteUrl = "https://foobar.sharepoint.com";
+
+// The content of your SMS message
+string smscontent = "A message from SharePoint";
+
+// Replace with a valid user email id from your SharePoint site
+string emailid = "bob@foobar.onmicrosoft.com";
+
+// Replace with a valid username from your SharePoint site
+string username = "i:0#.f|membership|steve@foobar.onmicrosoft.com";
+
+// An Array of users
+string[] userArray = { emailid, username };
+
+// List of users
+List<string> userList = userArray.ToList();
+
+using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
+{ 
+    // Send SMS to An array of users, 
+    // create a new request for each user (batchsize = 1)   
+    SMSRequestResult result = clientcontext.SendSMSToMultipleUsers(userArray , smscontent, 1);
+    Console.WriteLine("Requested by array, Result : {0} , Message: {1} "
+    , result.status.ToString(), result.status_message);
+    
+     // Send SMS to An List of users, 
+    //  create a single request for every 25 users  (batchsize default value is 25)
+    SMSRequestResult result2 = clientcontext.SendSMSToMultipleUsers(userList , smscontent);
+    Console.WriteLine("Requested by list, Result : {0} , Message: {1} "
+    , result2.status.ToString(), result2.status_message);
+}
+```
+#### <i class="icon-user"></i>SMS By CSOM UserCollection Object
+
+>**Extension Definiton**
+
+```c#
+/// <summary>
+/// Creates entry in SMS Request List for sending the message to user   
+/// </summary>
+/// <param name="users">SharePoint UserCollection Object</param>   
+/// <param name="message">SMS Message content</param>  
+/// <param name="batchSize">Optional limit to specify maximum recipients per request,
+/// recommended value is 25</param>  
+/// <param name="title">Optional title to be set for the request, default is "Custom"</param>  
+
+public static SMSRequestResult SendSMSToMultipleUsers(this ClientContext context, UserCollection users, 
+string message, string title = "Custom")
+```
+
+>**Usage**
+
+```c#
+
+// Office Dev PNP Authentication Manager
+var am = new OfficeDevPnP.Core.AuthenticationManager();
+
+// Url of the site where add-in is already installed
+string siteUrl = "https://foobar.sharepoint.com";
+
+// The content of your SMS message
+string smscontent = "A message from SharePoint";
+
+using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
+{ 
+   // Get users from default memebers group
+    clientContext.Load(clientContext.Web);
+    clientContext.Load(clientContext.Web.AssociatedMemberGroup, i => i.Users);
+    clientContext.ExecuteQueryRetry(); 
+    
+    //CSOM UserCollection object
+    UserCollection users = clientContext.Web.AssociatedMemberGroup.Users;
+    
+    //Send SMS to Users
+    SMSRequestResult result = clientcontext.SendSMSToMultipleUsers(users , smscontent);
+    Console.WriteLine("Requested user object, Result : {0} , Message: {1} "
+    , result.status.ToString(), result.status_message);
+     
+}
+```
