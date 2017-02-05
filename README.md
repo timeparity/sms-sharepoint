@@ -11,6 +11,7 @@ Table of contents
 *   [SMS For Office (SMS Via SharePoint List) - CSOM Extensions!](#)
     *   [About](#about)
     *   [Getting Started](#getting-started)
+        *   [Prerequisite](#prerequisite)
         *   [Install from NUGET](#install-from-nuget)
         *   [Include Refrences](#include-refrences)
     *   [Send SMS to SharePoint User](#-send-sms-to-sharepoint-user)
@@ -39,14 +40,24 @@ SMS For Office is SharePoint Add-in available in Microsoft SharePoint Store, tha
 > - Please note this github repository is intended for developers to integrate the add-in programmatically in applications.
 > - If you are looking for tutorial to send SMS from SharePoint Site, or need help with Installation refer the tutorial site here :    https://smsappsharepoint.wordpress.com/ 
 
-![Sending SMS from SharePoint Online / SharePoint 2016.](https://timeparity.com//img/sp_smsrequestlist_additem_512x384.png)
+![Sending SMS from SharePoint Online / SharePoint 2016.](https://timeparity.com/img/sp_smsrequestlist_additem_512x384.png)
 
 
 
 Getting Started
 -------------
+### 1) Prerequisite
 
-### Install from NUGET
+**Install SMS for Office(SMS via SharePoint List) Add-in**
+> - Install the add-in from Microsoft SharePoint Store, installation steps [here](https://smsappsharepoint.wordpress.com/2017/02/02/step-by-step-install-sms-for-office-sharepoint-add-in-from-microsoft-sharepoint-store/)
+> - Add-in Name: **SMS for Office(SMS via SharePoint List)**
+> - Office Store asset ID : **WA104380716**
+
+> ![SMS For Office SharePoint Add-in](https://timeparity.com/img/smsapp-icon-114x114.png)
+
+
+
+### 2) Install from NUGET
 
 The Library is available in on Nuget, please get the latest version depending on your SharePoint Environment:
 
@@ -65,7 +76,7 @@ Nuget:  [SharePoint 2016 SMS Integration](https://www.nuget.org/packages/TimePar
 PM> Install-Package TimeParity.SharePoint2016.SMS
 ```
 
-### Include refrences
+### 3) Include refrences
 
 Include the following refrences in your .Net Application:
 
@@ -244,6 +255,7 @@ using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
     Console.WriteLine("Requested by list");
     Console.WriteLine("Result : " + result2.status.ToString());
     Console.WriteLine("Result Message: " + result2.status_message);
+}
 ```
 #### <i class="icon-user"></i>SMS By CSOM UserCollection Object
 
