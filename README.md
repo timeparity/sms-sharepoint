@@ -13,8 +13,8 @@ Table of contents
     *   [Getting Started](#getting-started)
         *   [Install from NUGET](#install-from-nuget)
         *   [Include Refrences](#include-refrences)
-    *   [Send SMS to SharePoint User](#Send-SMS-to-SharePoint-User)
-        *   [SMS By Username / Email id](#SMS-By-Username-Email-id)
+    *   [Send SMS to SharePoint User](#-send-sms-to-sharepoint-user)
+        *   [SMS By Username / Email id](#sms-by-username--email-id)
         *   [Include Refrences](#include-refrences)
 
 
@@ -88,4 +88,6 @@ using TimeParity.SharePoint.SMS.Extensions;
 /// <param name="loginNameOrEmail">loginname or email id of the user</param>   
 /// <param name="message">SMS Message content</param>  
 /// <param name="title">Optional title to be set for the request, default is "Custom"</param>  
-        public static SMSRequestResult SendSMSToUser(this ClientContext context, string loginNameOrEmail, string message, string title = "Custom")
+
+public static SMSRequestResult SendSMSToUser(this ClientContext context, string loginNameOrEmail, 
+string message, string title = "Custom")
