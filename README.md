@@ -42,7 +42,7 @@ Getting Started
 
 The Library is available in on Nuget, please get the latest version depending on your SharePoint Environment:
 
-**SharePoint Online**
+>**SharePoint Online**
 
 Nuget:  [SharePoint Online SMS Integration](https://www.nuget.org/packages/TimeParity.SharePointOnline.SMS)
 ```powershell
@@ -50,7 +50,7 @@ PM> Install-Package TimeParity.SharePointOnline.SMS
 ```
 
 
-**SharePoint 2016**
+>**SharePoint 2016**
 
 Nuget:  [SharePoint 2016 SMS Integration](https://www.nuget.org/packages/TimeParity.SharePoint2016.SMS)
 ```powershell
