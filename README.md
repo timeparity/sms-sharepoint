@@ -16,7 +16,9 @@ Table of contents
     *   [Send SMS to SharePoint User](#-send-sms-to-sharepoint-user)
         *   [SMS By Username / Email id](#sms-by-username--email-id)
         *   [SMS By CSOM User Object](#sms-by-csom-user-object)
-
+    *   [Send SMS to Multiple SharePoint Users](#-send-sms-to-multiple-sharepoint-users)
+        *   [SMS By Username / Email id](#sms-by-username--email-id-1)
+        *   [SMS By CSOM UserCollection Object](#sms-by-csom-usercollection-object)
 
 
 <i class="icon-help-circled"></i> About
@@ -228,15 +230,16 @@ using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
     // Send SMS to An array of users, 
     // create a new request for each user (batchsize = 1)   
     SMSRequestResult result = clientcontext.SendSMSToMultipleUsers(userArray , smscontent, 1);
-    Console.WriteLine("Requested by array, Result : {0} , Message: {1} "
-    , result.status.ToString(), result.status_message);
+    Console.WriteLine("Requested by array");
+    Console.WriteLine("Result : {0}",result.status.ToString());
+    Console.WriteLine("Result Message: {0} ", result.status_message);
     
-     // Send SMS to An List of users, 
-    //  create a single request for every 25 users  (batchsize default value is 25)
+    // Send SMS to An List of users, 
+    // create a single request for every 25 users  (batchsize default value is 25)
     SMSRequestResult result2 = clientcontext.SendSMSToMultipleUsers(userList , smscontent);
-    Console.WriteLine("Requested by list, Result : {0} , Message: {1} "
-    , result2.status.ToString(), result2.status_message);
-}
+    Console.WriteLine("Requested by list");
+    Console.WriteLine("Result : {0}",result2.status.ToString());
+    Console.WriteLine("Result Message: {0} ", result2.status_message);
 ```
 #### <i class="icon-user"></i>SMS By CSOM UserCollection Object
 
@@ -281,8 +284,9 @@ using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
     
     //Send SMS to Users
     SMSRequestResult result = clientcontext.SendSMSToMultipleUsers(users , smscontent);
-    Console.WriteLine("Requested user object, Result : {0} , Message: {1} "
-    , result.status.ToString(), result.status_message);
+    Console.WriteLine("Requested by usercollection object");
+    Console.WriteLine("Result : {0}",result.status.ToString());
+    Console.WriteLine("Result Message: {0} ", result.status_message);
      
 }
 ```
