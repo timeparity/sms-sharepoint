@@ -36,7 +36,7 @@ SMS For Office is SharePoint Add-in available in Microsoft SharePoint Store, tha
 Getting Started
 -------------
 
-### Install from NUGET
+### Install Library Package from NUGET
 
 
 **SharePoint Online**
