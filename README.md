@@ -15,7 +15,7 @@ Table of contents
         *   [Include Refrences](#include-refrences)
     *   [Send SMS to SharePoint User](#-send-sms-to-sharepoint-user)
         *   [SMS By Username / Email id](#sms-by-username--email-id)
-        *   [SMS By CSOM User Object](##sms-by-csom-user-object)
+        *   [SMS By CSOM User Object](#sms-by-csom-user-object)
 
 
 
