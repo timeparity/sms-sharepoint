@@ -13,11 +13,13 @@ Table of contents
     *   [Getting Started](#getting-started)
         *   [Install from NUGET](#install-from-nuget)
         *   [Include Refrences](#include-refrences)
+    *   [Send SMS to SharePoint User](#Send-SMS-to-SharePoint-User)
+        *   [SMS By Username / Email id](#SMS-By-Username-Email-id)
+        *   [Include Refrences](#include-refrences)
 
 
 
-
-About
+<i class="icon-help-circled"></i> About
 -------------
 
 SMS For Office is SharePoint Add-in available in Microsoft SharePoint Store, that allows easy SMS integration in SharePoint Site. With zero manual configuration, the add-in provisions a SharePoint List which is used to Send SMS request. This repository intends to achieve a community driven repository of implementations extensions and samples of the Add-in.
@@ -25,7 +27,7 @@ SMS For Office is SharePoint Add-in available in Microsoft SharePoint Store, tha
 •	Official Website: https://timeparity.com/sms-sharepoint 
 
 •	On SharePoint Store: https://store.office.com/en-us/app.aspx?assetid=WA104380716 
-
+   
 > **Note:**
 
 > - Please note this github repository is intended for developers to integrate the add-in programmatically in applications.
@@ -66,3 +68,24 @@ using TimeParity.SharePoint.SMS;
 using TimeParity.SharePoint.SMS.Extensions;
 ```
 
+ <i class="icon-user"></i>Send SMS to SharePoint User
+-------------
+
+Once you have included the [references](#include-refrences) , you have the following options to chose from for sending SMS to your SharePoint Site User
+
+```c#
+using TimeParity.SharePoint.SMS;
+using TimeParity.SharePoint.SMS.Extensions;
+```
+#### <i class="icon-user"></i>SMS By Username / Email id
+
+>**Extension Definiton**
+
+```c#
+/// <summary>
+/// Creates entry in SMS Request List for sending the message to user of provided user id (loginame or email id)
+/// </summary>
+/// <param name="loginNameOrEmail">loginname or email id of the user</param>   
+/// <param name="message">SMS Message content</param>  
+/// <param name="title">Optional title to be set for the request, default is "Custom"</param>  
+        public static SMSRequestResult SendSMSToUser(this ClientContext context, string loginNameOrEmail, string message, string title = "Custom")
