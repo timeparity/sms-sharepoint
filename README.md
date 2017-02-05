@@ -39,7 +39,7 @@ Getting Started
 **SharePoint Online**
 
 Nuget:  [SharePoint Online SMS Integration](https://www.nuget.org/packages/TimeParity.SharePointOnline.SMS)
-```
+```powershell
 Install-Package TimeParity.SharePointOnline.SMS
 ```
 
@@ -47,6 +47,6 @@ Install-Package TimeParity.SharePointOnline.SMS
 **SharePoint 2016**
 
 Nuget:  [SharePoint 2016 SMS Integration](https://www.nuget.org/packages/TimeParity.SharePoint2016.SMS)
-```
+```powershell
 Install-Package TimeParity.SharePoint2016.SMS
 ```
