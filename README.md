@@ -1,9 +1,17 @@
 
 
-SMS For Office (SMS Via SharePoint List) - Programming Extensions!
+SMS For Office (SMS Via SharePoint List) - CSOM Extensions!
 ============================================================================
 
 This is the main repository for the SMS For Office Add-in extensions for SharePoint.
+
+Table of contents
+-------------
+
+*   [SMS For Office (SMS Via SharePoint List) - CSOM Extensions!](/)
+    *   [About](#about)
+    *   [Getting Started](#getting-started)
+        *   [Install from NUGET](#install-from-nuget)
 
 
 
@@ -23,15 +31,6 @@ SMS For Office is SharePoint Add-in available in Microsoft SharePoint Store, tha
 
 ![Sending SMS from SharePoint Online / SharePoint 2016.](https://timeparity.com//img/sp_smsrequestlist_additem_512x384.png)
 
-
-Table of contents
--------------
-
-*   [SMS For Office (SMS Via SharePoint List) - Programming Extensions!](#sms-for-office-sms-via-sharepoint-list-programming-extensions)
-    *   [About](#about)
-    *   [Table of contents](#table-of-contents)
-    *   [Getting Started](#getting-started)
-        *   [Install from NUGET](#install-from-nuget)
 
 
 Getting Started
