@@ -15,6 +15,7 @@ Table of contents
         *   [Include Refrences](#include-refrences)
     *   [Send SMS to SharePoint User](#-send-sms-to-sharepoint-user)
         *   [SMS By Username / Email id](#sms-by-username--email-id)
+        *   [SMS By CSOM User Object](##sms-by-csom-user-object)
 
 
 
@@ -163,7 +164,7 @@ using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
     
     //Send SMS to User
     SMSRequestResult result = clientcontext.SendSMSToUser(user , smscontent);
-    Console.WriteLine("Requested by email id, Result : {0} , Message: {1} "
+    Console.WriteLine("Requested user object, Result : {0} , Message: {1} "
     , result.status.ToString(), result.status_message);
      
 }
