@@ -12,6 +12,8 @@ Table of contents
     *   [About](#about)
     *   [Getting Started](#getting-started)
         *   [Install from NUGET](#install-from-nuget)
+        *   [Include Refrences](#include-refrences)
+
 
 
 
@@ -54,3 +56,13 @@ Nuget:  [SharePoint 2016 SMS Integration](https://www.nuget.org/packages/TimePar
 ```powershell
 PM> Install-Package TimeParity.SharePoint2016.SMS
 ```
+
+### Include refrences
+
+Include the following refrences in your .Net Application:
+
+```c#
+using TimeParity.SharePoint.SMS;
+using TimeParity.SharePoint.SMS.Extensions;
+```
+
