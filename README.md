@@ -109,7 +109,7 @@ string siteUrl = "https://foobar.sharepoint.com";
 string smscontent = "A message from SharePoint";
 
 // Replace with a valid user email id from your SharePoint site
-string emailid = ""bob@foobar.onmicrosoft.com";
+string emailid = "bob@foobar.onmicrosoft.com";
 
 // Replace with a valid username from your SharePoint site
 string username = "i:0#.f|membership|steve@foobar.onmicrosoft.com";
@@ -123,5 +123,48 @@ using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
     SMSRequestResult result2 = clientcontext.SendSMSToUser(username , smscontent);
     Console.WriteLine("Requested by username, Result : {0} , Message: {1} "
     , result2.status.ToString(), result2.status_message);
+}
+```
+#### <i class="icon-user"></i>SMS By CSOM User Object
+
+>**Extension Definiton**
+
+```c#
+/// <summary>
+/// Creates entry in SMS Request List for sending the message to user   
+/// </summary>
+/// <param name="user">SharePoint User Object</param>   
+/// <param name="message">SMS Message content</param>  
+/// <param name="title">Optional title to be set for the request, default is "Custom"</param>  
+
+public static SMSRequestResult SendSMSToUser(this ClientContext context, User user, 
+string message, string title = "Custom")
+```
+
+>**Usage**
+
+```c#
+
+// Office Dev PNP Authentication Manager
+var am = new OfficeDevPnP.Core.AuthenticationManager();
+
+// Url of the site where add-in is already installed
+string siteUrl = "https://foobar.sharepoint.com";
+
+// The content of your SMS message
+string smscontent = "A message from SharePoint";
+
+using (ClientContext clientcontext = am.GetWebLoginClientContext(siteurl))
+{ 
+   // Get current logged in user
+    clientContext.Load(clientContext.Web);
+    clientContext.ExecuteQueryRetry();    
+    User user = clientcontext.Web.CurrentUser;
+    
+    //Send SMS to User
+    SMSRequestResult result = clientcontext.SendSMSToUser(user , smscontent);
+    Console.WriteLine("Requested by email id, Result : {0} , Message: {1} "
+    , result.status.ToString(), result.status_message);
+     
 }
 ```
