@@ -27,7 +27,11 @@ SMS For Office is SharePoint Add-in available in Microsoft SharePoint Store, tha
 Table of contents
 -------------
 
-[TOC]
+*   [SMS For Office (SMS Via SharePoint List) - Programming Extensions!](#sms-for-office-sms-via-sharepoint-list-programming-extensions)
+    *   [About](#about)
+    *   [Table of contents](#table-of-contents)
+    *   [Getting Started](#getting-started)
+        *   [Install from NUGET](#install-from-nuget)
 
 
 Getting Started
