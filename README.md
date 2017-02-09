@@ -5,7 +5,7 @@ SMS For Office (SMS Via SharePoint List) - CSOM Extensions!
 
 This is the main repository for the SMS For Office Add-in extensions for SharePoint.
 
-<a href="https://timeparity.com/sms-sharepoint" rel="SMS For Office(SMS Via SharePoint List)">![SMS For Office(SMS Via SharePoint List)](https://timeparity.com/img/timeparity_sms_for_office.png)</a>
+<a href="https://timeparity.com/sms-sharepoint" rel="SMS For Office(SMS Via SharePoint List)">![SMS For Office(SMS Via SharePoint List)](https://timeparity.com/img/timeparity_sms_for_office_sharepoint.png)</a>
 
 <i class="icon-help-circled"></i> About
 -------------
